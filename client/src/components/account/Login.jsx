@@ -1,4 +1,7 @@
 import {Dialog,withStyles,Box,Typography,makeStyles, List, ListItem} from '@material-ui/core';
+import {GoogleLogin} from 'react-google-login'
+import { useContext } from 'react';
+import { AccountContext } from '../../context/AccountProvider';
 //css part
 const style = {
     dialogPaper: {
@@ -45,6 +48,18 @@ const qrurl = 'https://www.ginifab.com/feeds/qr_code/img/qrcode.jpg';
 
 const Login=({classes})=>{
     const classname=userStyles();
+    const clientid="421971063813-78gb6a7h1ourgv4llg9k9jcaj7g7pjan.apps.googleusercontent.com"
+    const {account,setAccount}=useContext(AccountContext);
+    
+    const loginSuccess=(res)=>{
+        console.log(res.profileObj);
+        console.log("Login Successful")
+        setAccount(res.profileObj);
+    }
+    const loginFailure=()=>{
+        console.log("Login Failed")
+    }
+    
     return(
         <Dialog 
         open={true}
@@ -60,8 +75,18 @@ const Login=({classes})=>{
                         <ListItem>3. Point your phone to this screen to capture the code</ListItem>
                     </List>
                 </Box>
-            <Box>
+            <Box style={{position:'relative'}}>
                 <img src={qrurl} alt='qr' className={classname.qrcode}/>
+                <Box style={{position:'absolute',left:'50%',top:'50%'}}>
+                    <GoogleLogin
+                        isSignedIn={true}
+                        cookiePolicy={'single_host_origin'}
+                        buttonText=""
+                        onSuccess={loginSuccess}
+                        onFailure={loginFailure}
+                        clientId={clientid}
+                    />
+                </Box>
             </Box>
         </Box>
         </Dialog>
