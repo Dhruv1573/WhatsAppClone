@@ -9,7 +9,8 @@ const userStyles=makeStyles({
         boxShadow:'none'
     },
     component:{
-        
+        background:'#DCDCDC',
+        height:'100vh'
     }
 })
 const Messenger=()=>{
