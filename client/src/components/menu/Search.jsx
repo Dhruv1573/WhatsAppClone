@@ -53,7 +53,6 @@ const Search = ({ setText }) => {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(e) => setText(e.target.value)}
             />
           </Box>
         </Box>
