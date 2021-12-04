@@ -10,6 +10,11 @@ const userStyles=makeStyles({
         background:'#00bfa5',
         boxShadow:'none'
     },
+    header:{
+        height:115,
+        background:'#00bfa5',
+        boxShadow:'none'
+    },
     component:{
         background:'#DCDCDC',
         height:'100vh'
@@ -23,7 +28,7 @@ const Messenger=()=>{
         <AppBar className={classes.loginHeader}>
             <Toolbar></Toolbar>
         </AppBar>
-        {account ?<ChatBox/>:<Login/>}
+        {account ?<ChatBox className={classes.header}/>:<Login/>}
         
         </Box>
     )

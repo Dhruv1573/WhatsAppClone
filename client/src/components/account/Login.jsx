@@ -2,6 +2,7 @@ import {Dialog,withStyles,Box,Typography,makeStyles, List, ListItem} from '@mate
 import {GoogleLogin} from 'react-google-login'
 import { useContext } from 'react';
 import { AccountContext } from '../../context/AccountProvider';
+import { clientid } from '../../constants/data';
 //css part
 const style = {
     dialogPaper: {
@@ -48,8 +49,8 @@ const qrurl = 'https://www.ginifab.com/feeds/qr_code/img/qrcode.jpg';
 
 const Login=({classes})=>{
     const classname=userStyles();
-    const clientid="421971063813-78gb6a7h1ourgv4llg9k9jcaj7g7pjan.apps.googleusercontent.com"
-    const {account,setAccount}=useContext(AccountContext);
+    
+    const {setAccount}=useContext(AccountContext);
     
     const loginSuccess=(res)=>{
         console.log(res.profileObj);
